@@ -1,0 +1,123 @@
+:root {
+  color-scheme: dark;
+  font-family: 'DM Sans', system-ui, sans-serif;
+  background: #0a0a0f;
+  color: #f0eef6;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+}
+
+.sanctuary {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.live-wallpaper {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+}
+
+.wallpaper-fog {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, transparent 40%, rgba(107, 114, 128, 0.15));
+}
+
+.wallpaper-orb {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  opacity: 0.6;
+  transform: translate(-50%, -50%);
+}
+
+.fps-badge {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  font-size: 11px;
+  color: #7a7890;
+}
+
+.hud-corner {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  z-index: 10;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  padding: 8px 12px;
+  background: rgba(18, 18, 26, 0.85);
+  border-radius: 12px;
+  backdrop-filter: blur(8px);
+}
+
+.hrv-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.hrv-green { background: #4ecdc4; }
+.hrv-yellow { background: #fde047; }
+.hrv-red { background: #ff4757; }
+
+.breathing-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(10, 10, 15, 0.75);
+  backdrop-filter: blur(12px);
+}
+
+.breath-circle {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 2px solid #7b6fff;
+  animation: breathe 4s ease-in-out infinite;
+}
+
+@keyframes breathe {
+  0%, 100% { transform: scale(1); opacity: 0.6; }
+  50% { transform: scale(1.4); opacity: 1; }
+}
+
+.compute-panel,
+.compute-status-panel {
+  position: fixed;
+  bottom: 16px;
+  left: 16px;
+  z-index: 10;
+  padding: 16px;
+  background: rgba(18, 18, 26, 0.9);
+  border-radius: 12px;
+  font-size: 13px;
+}
+
+.compute-status-panel dl {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 4px 16px;
+}
+
+.compute-status-panel dt { color: #7a7890; }
+.compute-status-panel dd { margin: 0; text-align: right; }
+
+.toggle-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}

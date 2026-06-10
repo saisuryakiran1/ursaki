@@ -1,0 +1,27 @@
+{
+  "name": "ursaki",
+  "version": "1.0.0",
+  "private": true,
+  "description": "UrSaKi — neuro-symbiotic mental wellness platform",
+  "workspaces": [
+    "apps/*",
+    "shared"
+  ],
+  "scripts": {
+    "build": "turbo run build",
+    "dev": "turbo run dev",
+    "dev:all": "powershell -ExecutionPolicy Bypass -File ./scripts/dev.ps1",
+    "lint": "turbo run lint",
+    "test": "turbo run test",
+    "test:backend": "cd backend && py -m pytest -v",
+    "typecheck": "turbo run typecheck"
+  },
+  "devDependencies": {
+    "turbo": "^2.3.3",
+    "typescript": "^5.7.2"
+  },
+  "packageManager": "npm@10.9.0",
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}

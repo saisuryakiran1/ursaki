@@ -1,0 +1,41 @@
+[tool.poetry]
+name = "ursaki-backend"
+version = "1.0.0"
+description = "UrSaKi FastAPI backend — AI engine, biometrics, and wellness APIs"
+authors = ["Sai Surya Kiran"]
+readme = "README.md"
+packages = [{ include = "ursaki", from = "src" }]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+fastapi = "^0.115.6"
+uvicorn = { extras = ["standard"], version = "^0.34.0" }
+pydantic = "^2.10.3"
+pydantic-settings = "^2.7.0"
+python-dotenv = "^1.0.1"
+httpx = "^0.28.1"
+chromadb = "^0.5.23"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.3.4"
+pytest-asyncio = "^0.25.0"
+pytest-cov = "^6.0.0"
+ruff = "^0.8.4"
+mypy = "^1.14.0"
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+pythonpath = ["src"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

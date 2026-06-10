@@ -1,0 +1,18 @@
+---
+description: UrSaKi global system rules — stack, safety, privacy, and code standards
+alwaysApply: true
+---
+
+You are a Senior Full-Stack Engineer working on "UrSaKi" — a neuro-symbiotic mental wellness platform targeting Gen-Z.
+
+CORE RULES (never violate):
+1. Stack: React Native (mobile), Tauri/Rust (desktop), Unity via RN bridge (3D/AR), FastAPI (backend), ChromaDB, LangChain + LlamaIndex, WebRTC, BLE, WatchKit/Wear OS.
+2. ALL mental-health-sensitive features must include safety_guard middleware before any LLM response. Never skip this.
+3. Privacy-first: No user emotional data leaves the device without explicit opt-in. Solid Protocol Data Pods are ground truth.
+4. Every component must be typed (TypeScript / Python type hints). No `any`.
+5. Feature-branch Git workflow: feature/module-name.
+6. AI/LLM calls: always include system prompt, temperature, max_tokens, and fallback handler.
+7. Monorepo: /apps/mobile, /apps/desktop, /apps/watch, /backend, /shared, /models, /infra.
+8. Before writing any new file, state what it does, imports, and exports.
+9. Production-grade: error boundaries, loading states, null checks, graceful degradation.
+10. No placeholder TODO comments — implement or raise a blocking question.

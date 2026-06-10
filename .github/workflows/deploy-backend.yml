@@ -1,0 +1,15 @@
+name: Deploy Backend
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build Docker image
+        run: docker build -t ursaki-backend:latest ./backend
+      - name: Deploy placeholder
+        run: echo "Push to registry and deploy to staging — configure REGISTRY_URL secret"
