@@ -23,5 +23,33 @@
   "packageManager": "npm@10.9.0",
   "engines": {
     "node": ">=20.0.0"
+  },
+  "overrides": {
+    "@xmldom/xmldom": "0.9.10",
+    "postcss": "8.5.15",
+    "tar": "7.5.11",
+    "uuid": "11.1.1",
+    "expo": {
+      "@expo/metro-config": {
+        "postcss": "8.5.15"
+      },
+      "@expo/cli": {
+        "@expo/plist": {
+          "@xmldom/xmldom": "0.9.10"
+        },
+        "tar": "7.5.11",
+        "cacache": {
+          "tar": "7.5.11"
+        },
+        "@expo/rudder-sdk-node": {
+          "uuid": "11.1.1"
+        }
+      },
+      "@expo/config-plugins": {
+        "xcode": {
+          "uuid": "11.1.1"
+        }
+      }
+    }
   }
 }

@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-import json
 import logging
 from pathlib import Path
 
@@ -59,10 +58,7 @@ class MemoryManager:
     ) -> list[EmotionSnapshot]:
         """Retrieve top-k similar emotional memories."""
         self._ensure_collection()
-        query = (
-            f"valence={current.valence} arousal={current.arousal} "
-            f"dominance={current.dominance}"
-        )
+        query = f"valence={current.valence} arousal={current.arousal} dominance={current.dominance}"
         if self._collection is None:
             return []
 
@@ -104,8 +100,7 @@ class MemoryManager:
             similar = self.retrieve_similar_emotions(user_id, current_snapshot, top_k=5)
             if similar:
                 memory_lines = [
-                    f"- {s.timestamp}: V={s.valence} A={s.arousal} D={s.dominance}"
-                    for s in similar
+                    f"- {s.timestamp}: V={s.valence} A={s.arousal} D={s.dominance}" for s in similar
                 ]
                 parts.append("## Similar Emotional Memories\n" + "\n".join(memory_lines))
 

@@ -6,7 +6,6 @@ import uuid
 from datetime import datetime, timedelta, timezone
 
 from ursaki.engine.orchestrator import orchestrator
-from ursaki.engine.safety_guard import safety_guard
 from ursaki.models import (
     GroundingExercise,
     GroundingStep,

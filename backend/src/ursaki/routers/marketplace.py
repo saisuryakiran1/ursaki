@@ -3,7 +3,13 @@
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
 
-from ursaki.marketplace.mod_manager import MindMod, create_mod, get_recommended_mods, list_mods, rate_mod
+from ursaki.marketplace.mod_manager import (
+    MindMod,
+    create_mod,
+    get_recommended_mods,
+    list_mods,
+    rate_mod,
+)
 from ursaki.marketplace.reputation_system import get_reputation
 from ursaki.models import EmotionSnapshot
 

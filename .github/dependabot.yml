@@ -1,0 +1,16 @@
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+    groups:
+      expo:
+        patterns:
+          - expo*
+          - "@expo/*"
+          - react-native*
+  - package-ecosystem: pip
+    directory: /backend
+    schedule:
+      interval: weekly

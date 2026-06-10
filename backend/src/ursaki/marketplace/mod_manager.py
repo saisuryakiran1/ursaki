@@ -5,7 +5,7 @@ from __future__ import annotations
 import uuid
 from datetime import datetime, timezone
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel
 
 from ursaki.models import EmotionSnapshot
 
@@ -76,9 +76,7 @@ def get_recommended_mods(
         return []
 
     def score(mod: MindMod) -> float:
-        tag_bonus = sum(
-            1 for t in mod.tags if t.lower() in ("calm", "anxiety", "joy", "focus")
-        )
+        tag_bonus = sum(1 for t in mod.tags if t.lower() in ("calm", "anxiety", "joy", "focus"))
         valence_match = 1.0 - abs(current_emotion.valence)
         return mod.avgEffectivenessRating * 0.5 + tag_bonus * 0.3 + valence_match * 0.2
 

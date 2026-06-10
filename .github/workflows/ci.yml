@@ -14,14 +14,14 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
-      - run: npm ci || npm install
+      - run: npm ci
       - name: ESLint (mobile)
         run: cd apps/mobile && npm run lint || true
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
       - name: Ruff
-        run: pip install ruff && ruff check backend/src backend/tests
+        run: pip install "ruff>=0.8.4" && ruff check backend/src backend/tests && ruff format --check backend/src backend/tests
 
   type-check:
     runs-on: ubuntu-latest
@@ -30,15 +30,17 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
-      - run: npm ci || npm install
+      - run: npm ci
       - run: npm run typecheck || true
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
       - name: mypy
+        working-directory: backend
         run: |
           pip install poetry
-          cd backend && poetry install && poetry run mypy src/ursaki || true
+          poetry install
+          poetry run mypy src/ursaki || true
 
   test-backend:
     runs-on: ubuntu-latest
@@ -48,12 +50,11 @@ jobs:
         with:
           python-version: '3.11'
       - name: Install dependencies
-        run: |
-          pip install poetry
-          cd backend && poetry install
+        working-directory: backend
+        run: pip install -r requirements.txt
       - name: pytest with coverage
-        run: |
-          cd backend && poetry run pytest --cov=ursaki --cov-report=term-missing --cov-fail-under=50
+        working-directory: backend
+        run: pytest --cov=ursaki --cov-report=term-missing --cov-fail-under=50
 
   test-mobile:
     runs-on: ubuntu-latest
@@ -62,8 +63,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
-      - run: npm ci || npm install
-      - run: cd apps/mobile && npm test || true
+      - run: npm ci
+      - run: cd apps/mobile && npm test
 
   safety-audit:
     runs-on: ubuntu-latest
@@ -73,7 +74,7 @@ jobs:
         with:
           python-version: '3.11'
       - name: Safety tests (blocking)
+        working-directory: backend
         run: |
-          pip install poetry
-          cd backend && poetry install
-          cd backend && poetry run pytest tests/test_safety_guard.py tests/test_engine.py -v --tb=short
+          pip install -r requirements.txt
+          pytest tests/test_safety_guard.py tests/test_engine.py -v --tb=short

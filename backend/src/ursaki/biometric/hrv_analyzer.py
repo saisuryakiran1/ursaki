@@ -22,8 +22,7 @@ def compute_rmssd(rr_intervals_ms: list[float]) -> float:
     if len(rr_intervals_ms) < 2:
         return 0.0
     diffs = [
-        (rr_intervals_ms[i + 1] - rr_intervals_ms[i]) ** 2
-        for i in range(len(rr_intervals_ms) - 1)
+        (rr_intervals_ms[i + 1] - rr_intervals_ms[i]) ** 2 for i in range(len(rr_intervals_ms) - 1)
     ]
     return math.sqrt(sum(diffs) / len(diffs))
 

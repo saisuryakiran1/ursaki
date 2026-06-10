@@ -5,11 +5,11 @@ from __future__ import annotations
 from ursaki.models import AvatarState, EmotionSnapshot
 
 
-def _hsl_to_hex(h: float, s: float, l: float) -> str:
+def _hsl_to_hex(h: float, s: float, lightness: float) -> str:
     """Convert HSL to hex color string."""
     import colorsys
 
-    r, g, b = colorsys.hls_to_rgb(h / 360.0, l / 100.0, s / 100.0)
+    r, g, b = colorsys.hls_to_rgb(h / 360.0, lightness / 100.0, s / 100.0)
     return f"#{int(r * 255):02x}{int(g * 255):02x}{int(b * 255):02x}"
 
 
