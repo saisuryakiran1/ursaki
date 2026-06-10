@@ -50,7 +50,7 @@ gh repo create ursaki --public --source=. --remote=origin --push
 If the repo already exists:
 
 ```powershell
-git remote set-url origin https://github.com/YOUR_USERNAME/ursaki.git
+git remote set-url origin https://github.com/saisuryakiran1/ursaki.git
 git push -u origin main
 ```
 
